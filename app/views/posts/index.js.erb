@@ -1,0 +1,9 @@
+// append the posts div with the new _posts.html.haml partial adding to the bottom
+// we select the paginator div and set it's contents to our link to next page kaminari helper
+// this refresh our links meaning it takes us to next page as we click rather than constantly giving link
+// will also reset its position.
+//third line we remove paginator div if the load more element (our link) doesn't exist. This remediates styling and when we run out of posts
+
+$('#posts').append("<%= escape_javascript(render 'posts')%>");
+$('#paginator').html("<%= escape_javascript(link_to_next_page(@posts, 'LOAD MORE', remote: true, id: 'load_more'))%>");
+if (!$('#load_more').length) { $('#paginator').remove(); }

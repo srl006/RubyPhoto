@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order('created_at DESC').page params[:page]
   end
 
   def new
@@ -26,15 +26,13 @@ class PostsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
-    if @post.update post_params
+    if @post.update(post_params)
       flash[:success] = "Post updated."
       redirect_to post_params
     else
@@ -45,6 +43,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:success] = "Your post has been deleted"
     redirect_to root_path
   end
 

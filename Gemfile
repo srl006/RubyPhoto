@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-# ayylmao
-
+gem 'jquery-turbolinks'
+gem 'kaminari', '~> 0.16.3'
 gem 'rails', '4.2.3'
 gem 'sqlite3'
 gem 'bootstrap-sass', '~> 3.3.5'
